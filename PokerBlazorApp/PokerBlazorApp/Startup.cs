@@ -29,7 +29,15 @@ namespace PokerBlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<RegisterService>();
+            //services.AddSingleton<IRegisterService, RegisterService>();
+            services.AddHttpClient<IUserService, UserService>(
+                    client =>
+                    {
+                        client.DefaultRequestHeaders.Accept.Clear();
+                        client.DefaultRequestHeaders.Accept
+                            .Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                        client.BaseAddress = new Uri(Configuration["RestApiUrl"], UriKind.Absolute);
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

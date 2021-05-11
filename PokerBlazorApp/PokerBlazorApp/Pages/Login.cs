@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
 using PokerBlazorApp.Model;
 using PokerBlazorApp.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PokerBlazorApp.Pages
 {
-    public partial class Register
+    public partial class Login
     {
         public UserCredentials UserCredentials { get; set; } = new UserCredentials();
 
@@ -12,17 +16,13 @@ namespace PokerBlazorApp.Pages
         public IUserService UserService { get; set; }
         [Inject]
         public NavigationManager NavManager { get; set; }
+
         private async void HandleValidSubmit()
         {
-            var user = new UserCredentials()
+            if (UserService.LoginUser(UserCredentials))
             {
-                UserName = UserCredentials.UserName,
-                Email = UserCredentials.Email,
-                Password = UserCredentials.Password
-            };
-
-            UserService.CreateUser(user);
-            NavManager.NavigateTo("/login");
+                NavManager.NavigateTo("/play");
+            }
         }
     }
 }
