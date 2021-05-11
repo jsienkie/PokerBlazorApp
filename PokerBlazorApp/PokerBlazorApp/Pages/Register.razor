@@ -1,0 +1,32 @@
+﻿@page "/register"
+
+<h1>Register</h1>
+
+
+<EditForm Model="@UserCredentials"
+          OnValidSubmit="@HandleValidSubmit"
+          >
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group row">
+
+        <label for="userName" class="col-sm-3">Username:</label>
+        <InputText id="userName" class="form-control col-sm-8"
+                   @bind-Value="@UserCredentials.UserName"
+                   />
+
+        <label for="userEmail" class="col-sm-3">Email:</label>
+        <InputText id="userEmail" class="form-control col-sm-8"
+                   @bind-Value="@UserCredentials.Email"
+                   />
+
+        <label for="userPassword" class="col-sm-3">Password: </label>
+        <InputText id="userPassword" class="form-control col-sm-8"
+                   @bind-Value="@UserCredentials.Password"
+                   />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary edit-btn">Register</button>
+</EditForm>
+
