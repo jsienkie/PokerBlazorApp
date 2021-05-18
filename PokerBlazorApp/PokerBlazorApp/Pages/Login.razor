@@ -1,6 +1,6 @@
-﻿@page "/register"
+﻿@page "/login"
 
-<h1>Register</h1>
+<h1>Login</h1>
 
 <EditForm Model="@UserCredentials"
           OnValidSubmit="@HandleValidSubmit">
@@ -12,16 +12,11 @@
         <InputText id="userName" class="form-control col-sm-8"
                    @bind-Value="@UserCredentials.UserName" />
 
-        <label for="userEmail" class="col-sm-3">Email:</label>
-        <InputText id="userEmail" class="form-control col-sm-8"
-                   @bind-Value="@UserCredentials.Email" />
-
         <label for="userPassword" class="col-sm-3">Password: </label>
         <InputText id="userPassword" class="form-control col-sm-8"
                    @bind-Value="@UserCredentials.Password" />
-
     </div>
 
-    <button type="submit" class="btn btn-primary edit-btn">Register</button>
+    <button type="submit" class="btn btn-primary edit-btn">Login</button>
 </EditForm>
 
